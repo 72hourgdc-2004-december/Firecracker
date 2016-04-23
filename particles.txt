@@ -1,0 +1,66 @@
+Particles!!!
+
+my god the fun
+(assuming an x-y 2D field of coordinates)
+
+
+
+Parameters: position_x,position_y
+
+
+Variables:
+//===============
+
+//declare the number of particles you want:
+struct parts[10]
+  //Current coordinates for position
+  xpos;
+  ypos;
+  //Movement speed in one FPS
+  xmov;
+  ymov;
+end
+
+//for for-statements:
+i;
+
+
+[start code]
+
+initialize all values:
+
+for(i=0;i<10;i++)
+{
+	//Bit o randomization in starting positions:
+	parts[i].xpos = position_x + rand(-10,10);
+	parts[i].ypos = position_y + rand(-10,10);
+	//and most important, random movement speeds
+	parts[i].xmov = rand(-5,5);
+	parts[i].ymov = rand(-5,5);
+	
+}
+
+
+loop(you do one every fps)
+{
+	//add the speed in x and y direction to the coordinates
+	for(i=0;i<10;i++)
+  	{  
+		parts[i].xpos += parts[i].xmov;	
+		parts[i].ypos += parts[i].ymov;	
+	}
+
+
+	//Render all particles
+	for(i=0;i<10;i++)
+  	{  
+		Put_an_image(parts[i].xpos,parts[i].ypos);	
+		Put_a_colored_pixel(parts[i].xpos,parts[i].ypos);
+	}
+
+	//wait for fps to end
+	wait();
+
+} // end loop
+
+[end code]
